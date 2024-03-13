@@ -1,0 +1,20 @@
+{
+  "name": "survey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.10.2",
+    "cors": "^2.8.5",
+    "env": "^0.0.2",
+    "express": "^4.18.3",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.10.2"
+  }
+}
