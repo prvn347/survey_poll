@@ -2,14 +2,19 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const express = require('express');
+
 const app = express()
 app.use(express.json())
 
 
 class SurveyModel{
-    static async createSurvey (data) {
+    static async createSurvey (data,userId) {
+        console.log(userId)
         return await prisma.survey.create({
             data: { title:data.title,
+                
+                userId:parseInt(userId),
+                
                         questions:{
                             create: data.questions.map(question => ({
                                 text: question.text,
@@ -42,7 +47,12 @@ class SurveyModel{
         return await prisma.survey.findMany({
             include:{
                
-                questions:true
+                questions:true,
+               User:{
+                select:{
+                    name:true
+                }
+               }
             }
         });
       }

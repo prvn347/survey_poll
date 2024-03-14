@@ -16,11 +16,12 @@ app.use(express.json())
 const createUser = async(req,res)=>{
     try {
         const body = req.body;
+        
         const newUser = await UserModel.createUser(body);
         
     
         let options = {
-            maxAge: 1000 * 60 * 1, 
+            maxAge: 1000 * 60 * 15, 
             httpOnly: true, 
             sameSite: "none", 
             secure: true 

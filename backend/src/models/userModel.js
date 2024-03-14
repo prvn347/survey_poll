@@ -11,6 +11,7 @@ class UserModel{
     static async createUser(data){
         return await prisma.user.create({
             data:{
+                
 email:data.email,
 name:data.name,
 password:data.password

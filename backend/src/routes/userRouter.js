@@ -5,6 +5,7 @@ const userRouter = express.Router()
 app.use(express.json())
 const cors = require('cors')
 app.use(cors())
+
 userRouter.post('/user',createUser)
 
 module.exports ={

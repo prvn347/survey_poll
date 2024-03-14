@@ -12,7 +12,10 @@ const createSurvey = async (req, res) => {
  
     try {
     const surveyData = req.body;
-    const newSurvey = await SurveyModel.createSurvey(surveyData);
+    const userId = req.userId;
+        console.log(userId)
+        console.log(typeof(userId))
+    const newSurvey = await SurveyModel.createSurvey(surveyData,userId);
     res.status(201).json(newSurvey);
     } catch (error) {
         res.json({error:error})
