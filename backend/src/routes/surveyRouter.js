@@ -11,9 +11,9 @@ app.use(express.json())
 
 surveyRouter.post('/survey',verifyTokenMiddleware,createSurvey)
 surveyRouter.get('/survey',getAllSurveys)
-surveyRouter.get('/survey/:id',getSurveyById )
-surveyRouter.put('/survey/:id',updateSurvey)
-surveyRouter.delete("/survey/:id",deleteSurvey)
+surveyRouter.get('/survey/:id',verifyTokenMiddleware,getSurveyById )
+surveyRouter.put('/survey/:id',verifyTokenMiddleware,updateSurvey)
+surveyRouter.delete("/survey/:id",verifyTokenMiddleware,deleteSurvey)
 module.exports = {
     surveyRouter
 }

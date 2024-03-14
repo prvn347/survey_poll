@@ -15,11 +15,9 @@ app.use(express.json())
 
 const createUser = async(req,res)=>{
     try {
-        const body = req.body;
-        
+        const body = req.body;    
         const newUser = await UserModel.createUser(body);
-        
-    
+
         let options = {
             maxAge: 1000 * 60 * 15, 
             httpOnly: true, 
@@ -37,7 +35,41 @@ const createUser = async(req,res)=>{
     }
 
 }
+const signInUser = async (req,res)=>{
+    try {
+    const body = req.body;    
+    const existedUser = await UserModel.signInUser(body);
+
+    let options = {
+        maxAge: 1000 * 60 * 15, 
+        httpOnly: true, 
+        sameSite: "none", 
+        secure: true 
+    }
+    const token = jwt.sign(existedUser.id,SECRET_KEY)
+    res.cookie( "token", token, options );
+    console.log( "🍪", req.cookies );
+    res.status(201).json({existedUser,token})
+
+} catch (error) {
+    res.status(400).json({error:error})
+    
+}
+}
+const createVote = async (req,res)=>{
+    try {
+         const {id} = req.body
+    const newVote = await UserModel.createVote(id)
+    res.json({msg:"voted++"})
+    } catch (error) {
+        res.json({error:error})
+        
+    }
+   
+    
+
+}
 
 module.exports ={
-    createUser
+    createUser,signInUser,createVote
 }

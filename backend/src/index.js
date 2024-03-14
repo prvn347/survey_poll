@@ -13,12 +13,8 @@ const corsOptions = {
     credentials: true
 };
 app.use( cors(corsOptions) );
-// #4
-
 app.use(express.json())
 app.get('/',(req,res)=>{
-    
-  
     res.send("hello from pravin")
 })
 app.use('/api/v1/',surveyRouter)

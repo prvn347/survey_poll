@@ -18,6 +18,25 @@ password:data.password
             }
         })
     }
+    static async signInUser(data){
+        return await prisma.user.findUnique({
+            where:{
+                email:data.email,
+                password:data.password
+            }
+        })
+    }
+    static async createVote(id){
+        let count = 0
+        return await prisma.option.updateMany({
+            where:{
+                questionId:id
+            },
+            data:{
+                votes:count++
+            }
+        })
+    }
 }
 module.exports = {
     UserModel
