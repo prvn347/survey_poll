@@ -10,6 +10,7 @@ export function AppBar(){
                 <Link to={'/signin'} className="border p-2 border-black text-md ">Log in</Link>
                 <Link to={'/signup'} className="border p-2 border-black bg-purple-500 text-md ">Sign up</Link>
                 <Link to={'/surveys'} className="border p-2 border-black text-md ">Surveys</Link>
+                <Link to={'/post'} className="border p-2 border-black  bg-yellow-500 text-md ">Post</Link>
 
             </div>
         </NavBarWrapper>

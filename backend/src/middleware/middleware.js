@@ -1,5 +1,9 @@
 const jwt = require('jsonwebtoken');
 const { SECRET_KEY } = require("../config");
+const express  = require('express')
+const app = express()
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 // Middleware function to verify JWT token from HTTPOnly cookie
 const verifyTokenMiddleware = (req, res, next) => {
@@ -8,7 +12,7 @@ const verifyTokenMiddleware = (req, res, next) => {
 
     // Check if token exists
     if (!token) {
-        return res.status(401).json({ error: "Unauthorized" });
+        return res.status(401).json({ error: "Unauthorizedj" });
     }
 
     try {
