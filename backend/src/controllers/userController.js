@@ -58,11 +58,12 @@ const signInUser = async (req,res)=>{
 }
 const createVote = async (req,res)=>{
     try {
-         const {id} = req.body
-    const newVote = await UserModel.createVote(id)
+        const { questionId, optionId } = req.body;
+await UserModel.createVote(questionId,optionId)
     res.json({msg:"voted++"})
     } catch (error) {
-        res.json({error:error})
+        console.error("Error recording vote:", error);
+        res.status(500).json({ error: "An error occurred while recording the vote." });
         
     }
    

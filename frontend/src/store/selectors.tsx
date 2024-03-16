@@ -3,13 +3,18 @@ import { backendUrlAtom, isAuthenticatedAtom, loadingAtom, postInputAtom, survey
 import axios from "axios";
 
 
+export const totalSurveysSelector = selector({
+    key: 'totalSurveysSelector',
+    get: ({ get }) => {
+      const surveys = get(surveysAtom);
+      return surveys.length;
+    },
+  });
 
 // export const surveysSelector = selector({
 //     key:"SurveysSelector",
 //     get: async({get})=>{
 //         const backendUrl = get(backendUrlAtom)
-//         const surveys = get(surveysAtom)
-//         const setSurveys = useSetRecoilState(surveysAtom);      
 //           try {
 //            const response = await  axios.get(backendUrl+ "/survey",{
 //             withCredentials: true
@@ -17,7 +22,7 @@ import axios from "axios";
         
 
 //            const surveys = response.data;
-//             setSurveys(surveys)
+//           return surveys;
           
 //         } catch (error) {
 //             console.log(error)

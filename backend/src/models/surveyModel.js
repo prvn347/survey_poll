@@ -51,7 +51,13 @@ class SurveyModel{
         return await prisma.survey.findUnique({ where: { 
             id:parseInt(id)
          } ,include:{
-            questions:true
+            questions:{
+                select:{
+                    id:true,
+                    text:true,
+                    options:true
+                }
+            }
          }});
          
       } 

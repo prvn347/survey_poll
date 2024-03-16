@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom"
 
 interface card{
     title:string
-    ,user:string
+    ,user:string,
+    id:number
 }
-export function Card({title,user}:card){
+export function Card({title,user,id}:card){
+    
+    const navigate = useNavigate()
+    const handleOnClick = ()=>{
+
+        navigate(`/survey/${id}`)
+    }
 
     return <div className="border shadow-md p-4 rounded-md">
         <div className=" flex flex-col gap-2 max-w-lg text-wrap">
@@ -16,7 +24,7 @@ export function Card({title,user}:card){
             <span className="text-md font-mono"> {user}</span>
             </div>
             <div className=" text-right">
-                <button className="bg-black text-sm font-medium rounded-md  text-white p-2 ">Take Survey</button>
+                <button onClick={handleOnClick} className="bg-black text-sm font-medium rounded-md  text-white p-2 ">Take Survey</button>
             </div>
         </div>
     </div>

@@ -12,6 +12,8 @@ import { RecoilRoot } from 'recoil'
 import { Home } from './pages/Home'
 import { QuestionAndAnswer } from './components/QuestionandOption'
 import { PostSurvey } from './pages/PostSuvey'
+import { SurveyPage } from './pages/Survey'
+import { ResultPage } from './pages/ResultPage'
 
 function App() {
  return <div>
@@ -23,11 +25,11 @@ function App() {
 <Route path='/signup' element={<Signup/>}/>
 <Route path='/surveys' element={<SurveyFeed/>}/>
 <Route path='/post' element={<PostSurvey/>}/>
+<Route path='/survey/:id' element={<SurveyPage/>}/>
+<Route path='/result/:id' element={<ResultPage/>}/>
 
 {/* <Route path='/' element={}/>
 
-<Route path='/survey' element={}/>
-<Route path='/answer' element={}/>
 <Route path='/mysuvey' element={}/> */}
   </Routes>
   </BrowserRouter>

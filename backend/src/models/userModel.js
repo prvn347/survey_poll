@@ -26,14 +26,15 @@ password:data.password
             }
         })
     }
-    static async createVote(id){
-        let count = 0
-        return await prisma.option.updateMany({
+    static async createVote(questionId,optionId){
+       
+        
+        return await prisma.option.update({
             where:{
-                questionId:id
+                id:parseInt(optionId)
             },
             data:{
-                votes:count++
+                votes:{increment:1}
             }
         })
     }

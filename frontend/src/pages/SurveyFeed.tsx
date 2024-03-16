@@ -1,17 +1,17 @@
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil"
 import { AppBar } from "../components/AppBar"
 import { Card } from "../components/Card"
-import { backendUrlAtom, isAuthenticatedAtom, loadingAtom, surveysAtom } from "../store/atoms"
+import { backendUrlAtom, surveysAtom } from "../store/atoms"
 import Loading from "../components/Loading"
-import { Spinner } from "../components/Spinner"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { Skelon } from "../components/Skeleton"
-
+import { totalSurveysSelector } from "../store/selectors"
 
 
 export default function SurveyFeed({}) {
     const [survey,setSurvey] = useRecoilState(surveysAtom)
+    const totalSuveys = useRecoilValue(totalSurveysSelector)
     const [loading,isloading] = useState(true)
     const backendUrl = useRecoilValue(backendUrlAtom)
  Loading("/surveys","/signin")
@@ -54,12 +54,13 @@ export default function SurveyFeed({}) {
         <div className="grid gap-2">
           <h1 className="font-bold text-2xl">Surveys</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">Here are the latest surveys. Share your feedback!</p>
+          <p  className=" font-mono font-semibold">Total Surveys: {totalSuveys}</p>
         </div>
         <div className="grid gap-4">
             {
                 survey.map((survey: { title: string }) =>(
                     // @ts-ignore
-<Card key={survey.id} title={survey.title} user={survey.User.name} />
+<Card key={survey.id} title={survey.title} id={survey.id} user={survey.User.name} />
                 ))
             }
         </div>
