@@ -7,7 +7,7 @@ export function PostSurvey(){
     Loading("/post","/signin")
     return <div className="">
         <AppBar/>
-        <div className= " flex justify-center pt-5">
+        <div className= " flex justify-center pt-5 mt-14">
             <div>
         <div>
 

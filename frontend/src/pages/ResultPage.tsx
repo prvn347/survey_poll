@@ -10,7 +10,7 @@ export function ResultPage(){
         <Link to={`/survey/${id}`} className="border p-2 border-black text-md ">⬅</Link>
                 <Link to={'/post'} className="border p-2 border-black  bg-yellow-500 text-md ">Post</Link>
         </NavBarWrapper>
-        <div className="flex justify-center pt-6">
+        <div className="flex justify-center pt-6 mt-14">
         <Result/>
         </div>
     </div>

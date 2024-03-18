@@ -4,6 +4,8 @@ import { useRecoilValue } from "recoil";
 import { backendUrlAtom, loadingAtom } from "../store/atoms";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "./Spinner";
+import { addSurveyToFeed } from "../utils/addSurveyTofeed";
+
 
 export function QuestionAndAnswer(){
     const navigate = useNavigate()
@@ -139,3 +141,4 @@ export function QuestionAndAnswer(){
         </div>
     </div>
 }
+

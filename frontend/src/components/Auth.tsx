@@ -32,7 +32,7 @@ if(loading){
       </div>
   }
      return <div>
-        <div>
+        <div className=" dark:bg-dark">
             <div><div className="text-center mb-16">
                 <span className="text-2xl   font-medium font-mono ">{type==="signin"?"Hello,who's this?":"Welcome!"}</span>
                 </div>

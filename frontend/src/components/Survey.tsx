@@ -73,11 +73,18 @@ export function SurveyLanding(){
             {question.options.map((option, optionIndex) => (
             <div className="grid gap-2">
               <div className="flex items-center space-x-2">
-                <label className="flex items-center space-x-2" htmlFor={`question-${optionIndex}`}>
+              <div className='relative w-full h-8'>
+				<input onClick={()=>handleOptionClick(question,option.id)} type='checkbox' id={`question-${optionIndex}`} name={`question-${index}`} className='appearance-none rounded-lg bg-gray-100 cursor-pointer h-full w-full 
+                    checked:bg-teal-400 transition-all duration-200  checked:hover:bg-teal-400 hover:bg-gray-200   peer'></input>
+				<label htmlFor={`question-${index}-${optionIndex}`} className='absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
+                     peer-checked:text-gray-100 transition-all duration-200 select-none
+                '> {option.text}</label>
+			</div>
+                {/* <label className="flex items-center space-x-2" htmlFor={`question-${optionIndex}`}>
                   <input onClick={()=>handleOptionClick(question,option.id)} className="w-4 h-4 text-primary" id={`question-${optionIndex}`} name={`question-${index}`} type="radio" value="1" />
                   <span className="font-semibold">{optionIndex}</span>
                 </label>
-                <p className="text-sm text-black dark:text-gray-400">{option.text}</p>
+                <p className="text-sm text-black dark:text-gray-400">{option.text}</p> */}
               </div>
               
              

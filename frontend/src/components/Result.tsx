@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { backendUrlAtom } from "../store/atoms";
 import axios from "axios";
+import Loading from "./Loading";
 
 export function Result(){
     const { id } = useParams();
@@ -32,10 +33,14 @@ export function Result(){
         
         
     }, [id, backendUrl])
-
+    // const {id} = useParams()
+Loading(`/result/${id}`,"/signin")
     const handleOnClick = ()=>{
         navigate('/surveys')
     }
+    const totalVotes = surveyData.questions.reduce((total, question) => {
+      return total + question.options.reduce((acc, option) => acc + option.votes, 0);
+    }, 0);
     return <div>
         <div>
         <div className="container grid items-center gap-4 px-4 md:px-6 ">
@@ -53,12 +58,15 @@ export function Result(){
             {question.options.map((option, optionIndex) => (
             <div className="grid gap-2">
               <div className="flex items-center space-x-2">
-                <label className="flex items-center space-x-2" htmlFor={`question-${optionIndex}`}>
-                  <span className="font-semibold">{optionIndex}</span>
-                  
-                </label>
-                <p className="text-sm text-black dark:text-gray-400">{option.text}</p>
-                <p className="text-md font-bold text-blue-700">{option.votes}  Vote</p>
+              <div className='relative w-full h-8 border rounded-lg'>
+				<input  type='checkbox' id={`question-${optionIndex}`} name={`question-${index}`} className='appearance-none rounded-lg bg-teal-100 cursor-pointer h-full w-full 
+                    transition-all duration-200   hover:bg-gray-200   peer' disabled style={{
+                      width: `${(option.votes / totalVotes) * 100}%` 
+                    }}></input>
+				<label htmlFor={`question-${index}-${optionIndex}`} className='absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
+                     peer-checked:text-gray-100 transition-all duration-200 select-none
+                '> {option.text} <span className="text-blue-500  text-xs">({option.votes}{option.votes>1?"votes":"vote"})</span></label>
+			</div>
               </div>
               
              
