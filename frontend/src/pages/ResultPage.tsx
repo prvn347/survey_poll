@@ -5,10 +5,10 @@ import { Result } from "../components/Result";
 export function ResultPage(){
     const {id} = useParams()
 
-    return <div>
-        <NavBarWrapper>
-        <Link to={`/survey/${id}`} className="border p-2 border-black text-md ">⬅</Link>
-                <Link to={'/post'} className="border p-2 border-black  bg-yellow-500 text-md ">Post</Link>
+    return <div className="bg-lightie dark:bg-darkie min-h-screen dark:text-white">
+            <NavBarWrapper>
+        <Link to={'/post'} className=" inline font-bricolage p-2  text-md  dark:text-white  hover:text-btncolor  dark:hover:text-btncolor   ">Create Survey</Link>
+                <Link to={'/surveys'} className=" inline font-bricolage  p-2   font-mono dark:text-white  text-md hover:text-btncolor  dark:hover:text-btncolor  ">Surveys</Link>
         </NavBarWrapper>
         <div className="flex justify-center pt-6 mt-14">
         <Result/>

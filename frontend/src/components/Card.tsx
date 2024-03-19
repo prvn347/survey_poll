@@ -18,13 +18,13 @@ export function Card({title,user,id}:card){
             <span className="text-xl font-semibold">{title}</span>
             <div className="flex items-center gap-2">
                 <span className="font-mono">Created by:</span>
-            <div className="w-6 h-6 rounded-full bg-black flex items-center justify-center dark:bg-yello">
+            <div className="w-6 h-6 rounded-full bg-black dark:bg-btncolor flex items-center justify-center dark:bg-yello">
                     <span className="text-md font-semibold text-white">{user[0]}</span>
                     </div>
             <span className="text-md font-mono"> {user}</span>
             </div>
             <div className=" text-right">
-                <button onClick={handleOnClick} className="bg-black text-sm font-medium rounded-md  text-white p-2 ">Take Survey</button>
+                <button onClick={handleOnClick} className="bg-black text-sm font-medium rounded-md  text-white p-2  dark:bg-btncolor">Take Survey</button>
             </div>
         </div>
     </div>

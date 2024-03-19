@@ -14,9 +14,9 @@ for(let i = 1 ; i<=Math.ceil(length  / postPerPage ); i++){
 }
 
 return (
-    <div className='p-3 bg-white text-black dark:bg-dark dark:text-white'>
+    <div className='p-3 bg-lightie dark:bg-darkie text-black dark:bg-dark dark:text-white'>
       {paginationNumbers.map((pageNumber) => (
-        <button  className={`p-4 text-black ${currentpage === pageNumber ? 'bg-yellow-300' : ''}`} onClick={() => handlePagination(pageNumber)} key={pageNumber}>{pageNumber}</button>
+        <button  className={`p-4 text-black dark:text-white ${currentpage === pageNumber ? 'bg-slate-300 text-black dark:text-black' : ''}`} onClick={() => handlePagination(pageNumber)} key={pageNumber}>{pageNumber}</button>
       ))}
     </div>
   );

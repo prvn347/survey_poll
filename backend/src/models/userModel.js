@@ -38,6 +38,16 @@ password:data.password
             }
         })
     }
+    static async findUser(id){
+        return await prisma.user.findUnique({
+            where:{
+                id:parseInt(id)
+            },
+            select:{
+                name:true
+            }
+        })
+    }
 }
 module.exports = {
     UserModel

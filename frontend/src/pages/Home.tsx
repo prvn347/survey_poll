@@ -1,7 +1,7 @@
 import { AppBar } from "../components/AppBar";
 
 export function Home(){
-    return <div>
+    return <div className=" ">
         <AppBar></AppBar>
     </div>
 }

@@ -8,6 +8,8 @@ import axios from "axios"
 import { Skelon } from "../components/Skeleton"
 import { totalSurveysSelector } from "../store/selectors"
 import { Pagination } from "../components/Pagination"
+import { NavBarWrapper } from "../components/NavbarWrapper"
+import { Link } from "react-router-dom"
 
 
 export default function SurveyFeed({}) {
@@ -23,7 +25,8 @@ const [postsPerPage, setPostsPerPage] = useState(10);
       withCredentials: true
   }).then((res)=>{
     setSurvey(res.data)
-      isloading(false)
+    isloading(false)
+   
   })
 
   
@@ -37,8 +40,11 @@ const [postsPerPage, setPostsPerPage] = useState(10);
   };
   if(loading){
     return <div>
-      <AppBar/>
-      <div className="flex flex-col min-h-screen py-4 space-y-4 md:py-10 md:space-y-8 mt-16">
+         <NavBarWrapper>
+                <Link to={'/post'} className=" inline font-bricolage p-2  text-md  dark:text-white  hover:text-btncolor  dark:hover:text-btncolor   ">Create Survey</Link>
+                <Link to={'/surveys'} className=" inline font-bricolage  p-2   font-mono dark:text-white  text-md hover:text-btncolor  dark:hover:text-btncolor  ">Surveys</Link>
+        </NavBarWrapper>
+      <div className="flex flex-col min-h-screen py-4 space-y-4 md:py-10 md:space-y-8 mt-16 bg-lightie dark:bg-darkie dark:text-white">
       
       <div className="mx-4 space-y-2 md:mx-auto md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
       <div className="grid gap-2">
@@ -58,8 +64,11 @@ const [postsPerPage, setPostsPerPage] = useState(10);
       </div>
   }
   return (<RecoilRoot><div>
-    <AppBar/>
-    <div className="flex flex-col min-h-screen py-4 space-y-4 md:py-10 md:space-y-8 mt-16">
+   <NavBarWrapper>
+                <Link to={'/post'} className=" inline font-bricolage p-2  text-md   dark:text-white  hover:text-btncolor  dark:hover:text-btncolor   ">Create Survey</Link>
+                <Link to={'/surveys'} className=" inline font-bricolage text-md p-2   dark:text-white   hover:text-btncolor  dark:hover:text-btncolor  ">Surveys</Link>
+        </NavBarWrapper>
+    <div className="flex flex-col min-h-screen py-4 space-y-4 md:py-10 md:space-y-8 mt-16 bg-lightie dark:bg-darkie dark:text-white">
       <div className="mx-4 space-y-2 md:mx-auto md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
         <div className="grid gap-2">
           <h1 className="font-bold text-2xl">Surveys</h1>

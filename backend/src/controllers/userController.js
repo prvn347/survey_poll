@@ -2,6 +2,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const express = require('express');
 const jwt =  require('jsonwebtoken')
+const z = require('zod')
+const {userSchema,
+    SurveyDataSchema} = require('../zod')
 
 const { UserModel } = require('../models/userModel');
 const { SECRET_KEY } = require('../config');
@@ -15,7 +18,13 @@ app.use(express.json())
 
 const createUser = async(req,res)=>{
     try {
-        const body = req.body;    
+        const body = req.body;  
+        const parsePayload =   userSchema.safeParse(body)
+        console.log(parsePayload)
+        if(!parsePayload){
+            alert('Please enter valid input.')
+            
+        }
         const newUser = await UserModel.createUser(body);
 
         let options = {
@@ -70,7 +79,19 @@ await UserModel.createVote(questionId,optionId)
     
 
 }
+const findUser = async ( req,res) =>{
+    
+    try {
+        const userId = req.userId;
+    const user = await UserModel.findUser(userId)
+    res.send(user)
+    } catch (error) {
+        console.log(error)
+        
+    }
+    
+}
 
 module.exports ={
-    createUser,signInUser,createVote
+    createUser,signInUser,createVote,findUser
 }

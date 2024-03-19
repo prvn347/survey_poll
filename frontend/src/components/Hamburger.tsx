@@ -1,4 +1,6 @@
-import { HtmlHTMLAttributes, useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { HtmlHTMLAttributes, useDebugValue, useEffect, useRef, useState, useTransition } from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -8,44 +10,72 @@ export interface HamburgerProps {
     isInitiallyOpen?: boolean;
 }
 
-export function Hamburger(props: HamburgerProps) {
+export function Hamburger(props: HamburgerProps ) {
     const { onClick, isInitiallyOpen } = props;
     const [isOpen, setIsOpen] = useState<boolean>(isInitiallyOpen ?? false);
-
+ 
     const handleClick = () => {
         setIsOpen((prev: any) => !prev);
         onClick(  );
     };
 
-    return (<div>
+    return (<div className="">
         <button
             onClick={handleClick}
             type="button"
-            className={`w-8 h-8 flex justify-around flex-col flex-wrap z-10 cursor-pointer`}
+            className={`w-8 h-8 flex justify-around flex-col flex-wrap z-10 cursor-pointer visible sm:invisible `}
         >
             <div
-                className={`bg-black block w-8 h-[0.35rem] rounded transition-all origin-[1px] ${
+                className={`bg-black dark:bg-white block w-8 h-[0.35rem] rounded transition-all origin-[1px] ${
                     isOpen ? 'rotate-45' : 'rotate-0'
                 }`}
             />
             <div
-                className={`bg-black block w-8 h-[0.35rem] rounded transition-all origin-[1px] ${
+                className={`bg-black dark:bg-white block block w-8 h-[0.35rem] rounded transition-all origin-[1px] ${
                     isOpen ? 'translate-x-full bg-transparent' : 'translate-x-0'
                 }`}
             />
             <div
-                className={`bg-black block w-8 h-[0.35rem] rounded transition-all origin-[1px] ${
+                className={`bg-black dark:bg-white block block w-8 h-[0.35rem] rounded transition-all origin-[1px] ${
                     isOpen ? 'rotate-[-45deg]' : 'rotate-0'
                 }`}
             />
             
         </button>
-        {isOpen && <SideBar setIsOpen={setIsOpen}/>}</div>
+        {isOpen && <SideBar setIsOpen={setIsOpen} />}</div>
     );
 }
 
 export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void }){
     const sidebarRef = useRef<HTMLDivElement>(null);
+    const [name,setName] = useState("")
+    const [ auth,setAuth] = useState(false)
+    useEffect(() => {
+      const checkAuthentication = async () => {
+        try {
+          // Make a request to your backend to check for the presence of the HTTP-only cookie
+          const response = await axios.get("http://localhost:3000/check-auth",{
+              withCredentials:true
+          });
+          // If the cookie exists, redirect to the feed page
+          setAuth(true)
+        } catch (error) {
+          // If the cookie doesn't exist, redirect to the signin page
+     setAuth(false)
+        }
+      };
+  
+      checkAuthentication();
+    }, []);
+    useEffect(()=>{
+      axios.get('http://localhost:3000/api/v1/me',{withCredentials:true})
+      .then((res)=>{
+        setName(res.data.name)
+        
+  
+      })
+    },[])
+    console.log(name)
 
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
@@ -60,16 +90,26 @@ export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void })
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [setIsOpen]);
+
     return  <div ref={sidebarRef}
-    className={`fixed top-16 left-0 h-full w-60 bg-gray-800 text-white p-4 transition-all ease-in-out duration-300  `}
+    className={`fixed  left-0 h-screen top-0 w-64 bg-lightie dark:bg-darkie text-black dark:text-white p-4 transition-all ease-in-out duration-300  `}
   >
-    <h2 className="text-xl font-bold mb-4">Sidebar</h2>
-    <ul>
-      <li className="py-2">Menu Item 1</li>
-      <li className="py-2">Menu Item 2</li>
-      <li className="py-2">Menu Item 3</li>
+
+<div className="flex flex-col gap-2 border-b-2 ">
+{auth?<><div className="w-16 h-16 rounded-full bg-black dark:bg-btncolor flex items-center justify-center ">
+          <span className="text-xl font-semibold text-white">{name[0]}</span>
+        </div>
+        <span className=" px-1 py-3 text-lg font-bricolage">Hi,{name}</span>
+</>:<span className="text-xl font-bricolage font-semibold text-btncolor">Please Signup</span>}
+</div>
+<div className=" pt-4">
+    <ul className="flex flex-col">
+      {auth? <><Link to={'/post'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Create Survey</Link><Link to={'/surveys'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Surveys</Link><Link to={'/logout'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> log out</Link></>
+      : <><Link to={'/signup'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Sign up</Link><Link to={'/signin'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Login</Link></> }
+      
+
     </ul>
 
-   
+   </div>
   </div>
 }
