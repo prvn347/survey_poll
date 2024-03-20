@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavBarWrapper } from "./NavbarWrapper";
-import { Hamburger } from "./Hamburger";
-import ThemeSwitcher from "./Switcher";
+
 
 export function AppBar(){
 

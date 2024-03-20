@@ -10,7 +10,7 @@ interface model{
 export function PopUpLogOut({toggleModal,description,action}:model){
 const navigate = useNavigate()
 const handleLogout = async (  )=> {
-         const response = await axios.post("http://localhost:3000/logout",{},{ withCredentials:true})
+         await axios.post("http://localhost:3000/logout",{},{ withCredentials:true})
         navigate('/signin')
     
 

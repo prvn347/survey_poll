@@ -1,5 +1,4 @@
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil"
-import { AppBar } from "../components/AppBar"
 import { Card } from "../components/Card"
 import { backendUrlAtom, surveysAtom } from "../store/atoms"
 import Loading from "../components/Loading"
@@ -19,11 +18,11 @@ export default function SurveyFeed({}) {
     const totalSuveys = useRecoilValue(totalSurveysSelector)
     const [loading,isloading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1);
-const [postsPerPage, setPostsPerPage] = useState(10);
+const [postsPerPage] = useState(10);
     const backendUrl = useRecoilValue(backendUrlAtom)
  Loading("/surveys","/signin")
   useEffect( ()=>{
-    const response =   axios.get(backendUrl+ "/survey",{
+      axios.get(backendUrl+ "/survey",{
       withCredentials: true
   }).then((res)=>{
     setSurvey(res.data)
@@ -50,7 +49,7 @@ const [postsPerPage, setPostsPerPage] = useState(10);
     return <div className=" font-bricolage">
          <NavBarWrapper>
                 <Link to={'/post'} className=" inline font-bricolage p-2  text-md  dark:text-white  hover:text-btncolor  dark:hover:text-btncolor   ">Create Survey</Link>
-                <Link to={'/surveys'} className=" inline font-bricolage  p-2   font-mono dark:text-white  text-md hover:text-btncolor  dark:hover:text-btncolor  ">Surveys</Link>
+                <Link to={'/surveys'} className=" inline font-bricolage  p-2   dark:text-white  text-md hover:text-btncolor  dark:hover:text-btncolor  ">Surveys</Link>
         </NavBarWrapper>
       <div className="flex flex-col min-h-screen py-4 space-y-4 md:py-10 md:space-y-8 mt-16 bg-lightie dark:bg-darkie dark:text-white">
       

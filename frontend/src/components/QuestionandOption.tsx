@@ -1,10 +1,9 @@
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { backendUrlAtom, loadingAtom } from "../store/atoms";
+import { backendUrlAtom } from "../store/atoms";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "./Spinner";
-import { addSurveyToFeed } from "../utils/addSurveyTofeed";
 
 
 export function QuestionAndAnswer(){

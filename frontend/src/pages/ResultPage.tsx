@@ -1,9 +1,8 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NavBarWrapper } from "../components/NavbarWrapper";
 import { Result } from "../components/Result";
 
 export function ResultPage(){
-    const {id} = useParams()
 
     return <div className="bg-lightie dark:bg-darkie min-h-screen dark:text-white">
             <NavBarWrapper>

@@ -1,5 +1,4 @@
-import axios from "axios"
-import { useNavigate, useParams } from "react-router-dom"
+
 
 interface model{
     toggleModal:() => void,
@@ -8,8 +7,7 @@ interface model{
 }
 
 export function OptionPopup({toggleModal,description,action}:model){
-const navigate = useNavigate()
-const {id} = useParams()
+
 
     return <><div className="fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center font-bricolage bg-gray-800 bg-opacity-50 z-50">
     <div className="bg-white dark:bg-darkie  rounded-lg shadow-lg p-8 max-w-md">

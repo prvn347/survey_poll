@@ -1,6 +1,5 @@
-import { Children, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { stickyAtom } from "../store/atoms";
+import {  useEffect, useState } from "react";
+
 import { Hamburger } from "./Hamburger";
 import { Link } from "react-router-dom";
 import ThemeSwitcher from "./Switcher";

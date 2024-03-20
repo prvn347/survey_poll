@@ -5,7 +5,7 @@ import { backendUrlAtom, postInputAtom } from "../store/atoms"
 import axios from "axios"
 import Loading from "./Loading"
 import { Spinner } from "./Spinner"
-import { Signup } from "../pages/signup"
+
 
 export function Auth({ type }: { type: "signup" | "signin" } ){
     const navigate = useNavigate()

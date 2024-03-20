@@ -1,5 +1,5 @@
 import axios from "axios";
-import { HtmlHTMLAttributes, useDebugValue, useEffect, useRef, useState, useTransition } from "react";
+import {  useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PopUpLogOut } from "./Popup";
 
@@ -56,7 +56,7 @@ export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void })
       const checkAuthentication = async () => {
         try {
           // Make a request to your backend to check for the presence of the HTTP-only cookie
-          const response = await axios.get("http://localhost:3000/check-auth",{
+         await axios.get("http://localhost:3000/check-auth",{
               withCredentials:true
           });
           // If the cookie exists, redirect to the feed page

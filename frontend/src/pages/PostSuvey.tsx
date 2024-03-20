@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { AppBar } from "../components/AppBar";
 import Loading from "../components/Loading";
 import { NavBarWrapper } from "../components/NavbarWrapper";
 import { QuestionAndAnswer } from "../components/QuestionandOption";

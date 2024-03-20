@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { isAuthenticatedAtom } from "../store/atoms";
-import { useRecoilState, useRecoilValue } from "recoil";
+
 import axios from "axios";
 
 
@@ -13,7 +12,7 @@ const Loading = (currentRoute:any,destinationRoute:any) => {
         const checkAuthentication = async () => {
           try {
             // Make a request to your backend to check for the presence of the HTTP-only cookie
-            const response = await axios.get("http://localhost:3000/check-auth",{
+           await axios.get("http://localhost:3000/check-auth",{
                 withCredentials:true
             });
             // If the cookie exists, redirect to the feed page

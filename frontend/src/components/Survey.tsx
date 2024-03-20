@@ -3,19 +3,11 @@ import { useEffect, useState } from "react"
 import { useRecoilValue } from "recoil";
 import { backendUrlAtom } from "../store/atoms";
 import { useNavigate, useParams } from "react-router-dom";
-import { Skelon } from "./Skeleton";
 import { PollSkeleton } from "./PollSkeleton";
-import { PopUpLogOut } from "./Popup";
 import { SurveyPopUp } from "./SurveyPopup";
 import { OptionPopup } from "./OptionPopup";
 
-interface survey{
-    id:number,
-    title:string,
-    text:string,
-    option:string
 
-}
 export function SurveyLanding(){
   const navigate = useNavigate()
     const { id } = useParams();

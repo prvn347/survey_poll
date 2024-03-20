@@ -1,6 +1,6 @@
-import { selector, useRecoilState, useSetRecoilState } from "recoil";
-import { backendUrlAtom, isAuthenticatedAtom, loadingAtom, postInputAtom, surveysAtom } from "./atoms";
-import axios from "axios";
+import { selector} from "recoil";
+import {  surveysAtom } from "./atoms";
+
 
 
 export const totalSurveysSelector = selector({

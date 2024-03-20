@@ -1,8 +1,7 @@
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { NavBarWrapper } from "../components/NavbarWrapper";
 import { SurveyLanding } from "../components/Survey";
 import Loading from "../components/Loading";
-import axios from "axios";
 
 export function SurveyPage(){
     const {id} = useParams()

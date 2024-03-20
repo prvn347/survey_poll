@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 
 import './App.css'
 // import Example from './pages/Auth'
@@ -10,7 +8,6 @@ import { Signup } from './pages/signup'
 import SurveyFeed from './pages/SurveyFeed'
 import { RecoilRoot } from 'recoil'
 import { Home } from './pages/Home'
-import { QuestionAndAnswer } from './components/QuestionandOption'
 import { PostSurvey } from './pages/PostSuvey'
 import { SurveyPage } from './pages/Survey'
 import { ResultPage } from './pages/ResultPage'
