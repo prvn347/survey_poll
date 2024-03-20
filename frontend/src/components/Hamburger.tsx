@@ -56,7 +56,7 @@ export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void })
       const checkAuthentication = async () => {
         try {
           // Make a request to your backend to check for the presence of the HTTP-only cookie
-         await axios.get("http://localhost:3000/check-auth",{
+         await axios.get("https://survey-poll-backend.onrender.com/check-auth",{
               withCredentials:true
           });
           // If the cookie exists, redirect to the feed page
@@ -70,7 +70,7 @@ export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void })
       checkAuthentication();
     }, []);
     useEffect(()=>{
-      axios.get('http://localhost:3000/api/v1/me',{withCredentials:true})
+      axios.get('https://survey-poll-backend.onrender.com/api/v1/me',{withCredentials:true})
       .then((res)=>{
         setName(res.data.name)
         

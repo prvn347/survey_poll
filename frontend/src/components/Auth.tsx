@@ -35,7 +35,7 @@ if(loading){
       </div>
   }
      return <div>
-        <div className=" ">
+        <div className=" font-bricolage">
             <div><div className="text-center mb-16">
                 <span className="text-2xl   font-medium font-mono ">{type==="signin"?"Hello,who's this?":"Welcome!"}</span>
                 </div>
@@ -46,7 +46,7 @@ if(loading){
                 <LabeledInput onchange={(e)=>{
                     setPostInput({...postInput,password:e.target.value})
 
-                }} label="Password" type="password" placeholder="min length 8"/>
+                }} label="Password" type="password" placeholder="password min. 8 characters"/>
                 {type === "signup" ? <LabeledInput onchange={(e)=>{
                                         setPostInput({...postInput,name:e.target.value})
 

@@ -17,7 +17,7 @@ export const postInputAtom = atom({
 
 export const backendUrlAtom = atom({
     key:"backendUrl",
-    default:"http://localhost:3000/api/v1"
+    default:"https://survey-poll-backend.onrender.com/api/v1"
 })
 export const isAuthenticatedAtom = atom<Boolean>({
     key: "isAuthenticated",

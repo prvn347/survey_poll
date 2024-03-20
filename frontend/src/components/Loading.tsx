@@ -12,7 +12,7 @@ const Loading = (currentRoute:any,destinationRoute:any) => {
         const checkAuthentication = async () => {
           try {
             // Make a request to your backend to check for the presence of the HTTP-only cookie
-           await axios.get("http://localhost:3000/check-auth",{
+           await axios.get("https://survey-poll-backend.onrender.com/check-auth",{
                 withCredentials:true
             });
             // If the cookie exists, redirect to the feed page
