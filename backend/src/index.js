@@ -19,13 +19,21 @@ app.get('/',(req,res)=>{
 })
 app.get("/check-auth", (req, res) => {
     if (req.cookies.token) {
-      // If the HTTP-only cookie exists, the user is authenticated
       res.sendStatus(200);
     } else {
-      // If the HTTP-only cookie doesn't exist, the user is not authenticated
       res.sendStatus(401);
     }
   });
+  app.post('/logout',(req,res)=>{
+   try {
+    res.cookie('token','',{expires:new Date(0),httpOnly:true})
+        res.status(200).send('Logout successful');
+   } catch (error) {
+    console.log(error)
+   }
+        
+    
+  })
 app.use('/api/v1/',surveyRouter)
 app.use('/api/v1/',userRouter)
 app.listen(port,()=>{

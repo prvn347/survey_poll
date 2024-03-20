@@ -5,6 +5,7 @@ import { backendUrlAtom, postInputAtom } from "../store/atoms"
 import axios from "axios"
 import Loading from "./Loading"
 import { Spinner } from "./Spinner"
+import { Signup } from "../pages/signup"
 
 export function Auth({ type }: { type: "signup" | "signin" } ){
     const navigate = useNavigate()
@@ -21,7 +22,9 @@ export function Auth({ type }: { type: "signup" | "signin" } ){
         isloading(false)
         navigate('/surveys')
     } catch (error) {
-        alert(error)
+        alert("Invalid Input")
+        {type === "signin"? navigate('/signup') :  navigate('/signin')}
+      
     }
 }
 if(loading){
@@ -43,7 +46,7 @@ if(loading){
                 <LabeledInput onchange={(e)=>{
                     setPostInput({...postInput,password:e.target.value})
 
-                }} label="Password" type="password" placeholder="password"/>
+                }} label="Password" type="password" placeholder="min length 8"/>
                 {type === "signup" ? <LabeledInput onchange={(e)=>{
                                         setPostInput({...postInput,name:e.target.value})
 

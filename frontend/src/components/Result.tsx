@@ -59,7 +59,7 @@ Loading(`/result/${id}`,"/signin")
      </div>
     </div>
     }
-    return <div>
+    return <div className=" font-bricolage">
         <div>
         <div className="container grid items-center gap-4 px-4 md:px-6 ">
         <div className="space-y-2">
@@ -77,7 +77,7 @@ Loading(`/result/${id}`,"/signin")
             <div className="grid gap-2">
               <div className="flex items-center space-x-2">
               <div className='relative w-full h-8 border rounded-lg'>
-				<input  type='checkbox' id={`question-${optionIndex}`} name={`question-${index}`} className='appearance-none rounded-lg  bg-violet-500  cursor-pointer h-full w-full 
+				<input  type='checkbox' id={`question-${optionIndex}`} name={`question-${index}`} className='appearance-none rounded-lg  bg-btncolor  cursor-pointer h-full w-full 
                     transition-all duration-200   hover:bg-gray-200  dark:text-black  peer' disabled style={{
                       width: `${(option.votes / question.options.reduce((total, option) => total + option.votes, 0)) * 100}%`                    }}></input>
 				<label htmlFor={`question-${index}-${optionIndex}`} className='absolute top-[50%] left-3 text-gray-400 dark:text-white  -translate-y-[50%]

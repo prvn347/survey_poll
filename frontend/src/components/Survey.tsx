@@ -5,6 +5,9 @@ import { backendUrlAtom } from "../store/atoms";
 import { useNavigate, useParams } from "react-router-dom";
 import { Skelon } from "./Skeleton";
 import { PollSkeleton } from "./PollSkeleton";
+import { PopUpLogOut } from "./Popup";
+import { SurveyPopUp } from "./SurveyPopup";
+import { OptionPopup } from "./OptionPopup";
 
 interface survey{
     id:number,
@@ -52,6 +55,8 @@ export function SurveyLanding(){
 
     }
 
+    const [isOptionSelected, setIsOptionSelected] = useState(false);
+
     const handleOptionClick = async (questionId: any, optionId: any) => {
       try {
         console.log(questionId)
@@ -62,16 +67,23 @@ export function SurveyLanding(){
           });
           localStorage.setItem(`voted-${questionId}`, "true");
         } else {
-          alert("You already voted for this question!");
+          setIsOptionSelected(!isOptionSelected)
          
         }
       } catch (error) {
         console.error("Error voting:", error);
       }
     };
+    const handleOp = ()=>{
+      setIsOptionSelected(!isOptionSelected)
+    }
+    const [isOpen, setIsOpen] = useState(false);
+
     const handleDisabledOptionClick = () => {
-      alert("You already voted for this question!");
+
+      setIsOpen(!isOpen);
   };
+  
     if(loading){
       return <div>
       <div className="container grid items-center gap-4 px-4 md:px-6 ">
@@ -88,8 +100,12 @@ export function SurveyLanding(){
     </div>
      
     }
-    return <div>
-         <div className="container grid items-center gap-4 px-4 md:px-6 ">
+    return <div className=" font-bricolage">
+                    {isOptionSelected && ( <OptionPopup action="Okay" description="You already voted this question!" toggleModal={handleOp}/>)}
+
+              {isOpen && ( <SurveyPopUp action="See results" description="You already voted this survey" toggleModal={handleDisabledOptionClick}/>)}
+
+         <div className="container grid items-center gap-4 px-4 md:px-6  ">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">{surveyData.title}</h1>
           <p className="max-w-[700px] text-gray-500 md:text-xl/relaxed dark:text-gray-400">
@@ -106,8 +122,8 @@ export function SurveyLanding(){
               <div className="flex items-center space-x-2">
               <div className='relative w-full h-8'>
 				<input onClick={()=>handleOptionClick(question.id,option.id)} type='checkbox' id={`question-${optionIndex}`} name={`question-${index}`} className='appearance-none rounded-lg border dark:border  cursor-pointer h-full w-full 
-                bg-darkie     checked:bg-violet-500 transition-all duration-200  checked:hover:bg-violet-500  p-4   peer' disabled = {localStorage.getItem(`voted-${question.id}`) !== null}></input>
-				<label  onClick={localStorage.getItem(`voted-${question.id}`) ? handleDisabledOptionClick : undefined} htmlFor={`question-${index}-${optionIndex}`} className='absolute top-[50%] left-3 text-gray-400   -translate-y-[50%]
+                bg-darkie     checked:bg-btncolor transition-all duration-200  checked:hover:bg-btncolor  p-4   peer' disabled = {localStorage.getItem(`voted-${question.id}`) !== null}></input>
+				<label  onClick={localStorage.getItem(`voted-${question.id}`) ? handleDisabledOptionClick : undefined} htmlFor={`question-${index}-${optionIndex}`} className='absolute top-[50%] cursor-pointer left-3 text-gray-400   -translate-y-[50%]
                      peer-checked:text-gray-100 transition-all duration-200 select-none
                 '> {option.text}</label>
 			</div>

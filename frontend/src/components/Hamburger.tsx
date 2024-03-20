@@ -1,6 +1,7 @@
 import axios from "axios";
 import { HtmlHTMLAttributes, useDebugValue, useEffect, useRef, useState, useTransition } from "react";
 import { Link } from "react-router-dom";
+import { PopUpLogOut } from "./Popup";
 
 
 
@@ -50,6 +51,7 @@ export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void })
     const sidebarRef = useRef<HTMLDivElement>(null);
     const [name,setName] = useState("")
     const [ auth,setAuth] = useState(false)
+
     useEffect(() => {
       const checkAuthentication = async () => {
         try {
@@ -76,7 +78,13 @@ export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void })
       })
     },[])
     console.log(name)
+ 
+ const [iso, setISO] = useState(false);
+ const hancleOnclick = ()=>{
+   setISO(!iso);
 
+
+}
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
         if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
@@ -92,7 +100,7 @@ export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void })
     }, [setIsOpen]);
 
     return  <div ref={sidebarRef}
-    className={`fixed  left-0 h-screen top-0 w-64 bg-lightie dark:bg-darkie text-black dark:text-white p-4 transition-all ease-in-out duration-300  `}
+    className={`fixed font-bricolage left-0 h-screen top-0 w-64 bg-lightie dark:bg-darkie text-black dark:text-white p-4 transition-all ease-in-out duration-300  `}
   >
 
 <div className="flex flex-col gap-2 border-b-2 ">
@@ -104,8 +112,12 @@ export function SideBar({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void })
 </div>
 <div className=" pt-4">
     <ul className="flex flex-col">
-      {auth? <><Link to={'/post'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Create Survey</Link><Link to={'/surveys'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Surveys</Link><Link to={'/logout'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> log out</Link></>
-      : <><Link to={'/signup'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Sign up</Link><Link to={'/signin'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Login</Link></> }
+    {iso && ( <PopUpLogOut action="Logout" description="Are you sure you want to logout?" toggleModal={hancleOnclick}/>)}
+
+      {auth? <><Link to={'/post'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Create Survey</Link>
+      <Link to={'/surveys'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Surveys</Link>
+      <Link to={''} onClick= {hancleOnclick} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> log out</Link></>
+      : <><Link to={'/signup'}  className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Sign up</Link><Link to={'/signin'} className="py-2 text-xl font-semibold font-bricolage  hover:text-btncolor"> Login</Link></> }
       
 
     </ul>
