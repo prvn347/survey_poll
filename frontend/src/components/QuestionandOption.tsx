@@ -82,7 +82,7 @@ export function QuestionAndAnswer(){
       <Spinner/></div>
       </div>
   }
-    return <div className=" bg-lightie dark:bg-darkie">
+    return <div className=" bg-lightie dark:bg-darkie font-bricolage">
         <div className="space-y-4 flex flex-col pt-6 ">
         <div className="space-y-2 flex flex-col">
           <label className="space-y-1 font-medium text-lg" htmlFor="title">

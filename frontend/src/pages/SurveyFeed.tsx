@@ -80,7 +80,7 @@ const [postsPerPage] = useState(10);
         {isOpen && ( <PopUpLogOut action="Logout" description="Are you sure you want to logout?" toggleModal={hancleOnclick}/>)}
     <div className="flex flex-col min-h-screen py-4 space-y-4 md:py-10 md:space-y-8 mt-16 bg-lightie dark:bg-darkie dark:text-white">
       <div className="mx-4 space-y-2 md:mx-auto md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
-      <TracingBeam  children= {<><div className="grid gap-2">
+      <div className="grid gap-2">
           <h1 className="font-bold text-2xl">Surveys</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">Here are the latest surveys. Share your feedback!</p>
           <p className=" font-mono font-semibold">Total Surveys: {totalSuveys}</p>
@@ -93,7 +93,7 @@ const [postsPerPage] = useState(10);
                 // @ts-ignore
                 <Card key={survey.id} title={survey.title} id={survey.id} user={survey.User.name} />
               )))}
-          </div></>}/>
+          </div>
         
         <Pagination currentpage={currentPage} handlePagination={handlePagination} postPerPage={postsPerPage}  length={totalSuveys}/>
       </div>
