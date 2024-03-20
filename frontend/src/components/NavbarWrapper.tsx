@@ -20,7 +20,7 @@ export function NavBarWrapper({children}:any){
     }, []);
     return (
         <div className="wrapper  dark:bg-darkie   top-0  flex justify-between px-10 py-4 bg-blueish
-                    backdrop-blur-sm shadow-md w-full
+        backdrop-blur-sm bg-white/30 shadow-md w-full
                     fixed top-0 left-0 right-0 z-10">
           <div className="flex gap-3  justify-center items-center">    
                <Hamburger onClick={function (): void {

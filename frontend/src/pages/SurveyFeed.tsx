@@ -10,7 +10,6 @@ import { Pagination } from "../components/Pagination"
 import { NavBarWrapper } from "../components/NavbarWrapper"
 import { Link } from "react-router-dom"
 import { PopUpLogOut } from "../components/Popup"
-import { TracingBeam } from "../components/ui/tracing-beam"
 
 
 export default function SurveyFeed({}) {
