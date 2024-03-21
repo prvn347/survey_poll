@@ -1,15 +1,13 @@
-import { selector} from "recoil";
-import {  surveysAtom } from "./atoms";
-
-
+import { selector } from "recoil";
+import { surveysAtom } from "./atoms";
 
 export const totalSurveysSelector = selector({
-    key: 'totalSurveysSelector',
-    get: ({ get }) => {
-      const surveys = get(surveysAtom);
-      return surveys.length;
-    },
-  });
+  key: "totalSurveysSelector",
+  get: ({ get }) => {
+    const surveys = get(surveysAtom);
+    return surveys.length;
+  },
+});
 
 // export const surveysSelector = selector({
 //     key:"SurveysSelector",
@@ -19,11 +17,10 @@ export const totalSurveysSelector = selector({
 //            const response = await  axios.get(backendUrl+ "/survey",{
 //             withCredentials: true
 //         })
-        
 
 //            const surveys = response.data;
 //           return surveys;
-          
+
 //         } catch (error) {
 //             console.log(error)
 //             return []
@@ -42,19 +39,14 @@ export const totalSurveysSelector = selector({
 //             });
 //             console.log(response.data)
 //             if(response.data = "Unauthorized"){
-                
+
 //             }
 //             return true;
-            
-
 
 //         } catch (error) {
 //             console.log(error)
-           
-            
+
 //         }
-       
+
 //     }
 // })
-
-
