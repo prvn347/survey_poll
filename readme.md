@@ -20,23 +20,28 @@ This is a survey poll web app built with React, Prisma, PostgreSQL, Node.js, Exp
 ## Getting Started
 
 1.  **Clone the repository:**
+
     ```bash
-    git clone <https://github.com/prvn347/survey_poll.git>
+    git clone https://github.com/prvn347/survey_poll.git
 
     ```
+
 2.  **Install dependencies:**
     ```bash
-    cd survey-poll-web-app
+    cd survey_poll
     npm install
     ```
 3.  **Set up the database:**
-        Create a PostgreSQL database
+    Create a PostgreSQL database
     Update the connection URL in the Prisma schema file (schema.prisma)
 
-````bash
-npx prisma migrate dev
+    ```bash
+        npx prisma migrate dev
 
-4. **Start the server**
-  ```bash
-  npm start
-````
+    ```
+
+4.  **Start the server**
+
+    ```bash
+        npm run dev
+    ```
