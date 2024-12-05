@@ -7,6 +7,8 @@ const { surveyRouter } = require("./routes/surveyRouter");
 const { userRouter } = require("./routes/userRouter");
 const app = express();
 const cookieParser = require("cookie-parser");
+const { reloadWebsite } = require("./spin-down");
+reloadWebsite();
 app.use(cookieParser());
 const corsOptions = {
   origin: "http://localhost:5173",
